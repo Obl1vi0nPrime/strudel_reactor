@@ -1,8 +1,14 @@
 ﻿function ProcButtons() {
   return (
-      <div>
-          <button id="process_play" className="btn btn-outline-primary">Proc & Play</button>
-          <button id="process" className="btn btn-outline-primary">Preprocess</button>
+      <div className="btn-toolbar gap-2 flex-wrap">
+          <div className="btn-group">
+              <button id="process_play" className="btn btn-primary">
+                  ▶ Proc &amp; Play
+              </button>
+              <button id="process" className="btn btn-outline-primary">
+                  ⚙ Preprocess
+              </button>
+          </div>
       </div>
   );
 }
