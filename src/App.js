@@ -47,11 +47,27 @@ export function ProcAndPlay() {
 }
 
 export function Proc() {
+    const area = document.getElementById('proc');
+    if (!area) return;
 
-    let proc_text = document.getElementById('proc').value
-    let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
-    ProcessText(proc_text);
-    globalEditor.setCode(proc_text_replaced)
+    const raw = area.value || "";
+
+    // existing p1_Radio replaced (kept exactly as the starter)
+    let out = raw.replaceAll('<p1_Radio>', ProcessText);
+
+    // Replace <tempo_bpm> using an input with id="tempo"
+    const tempoEl = document.getElementById('tempo');
+    const tempoVal = Number(tempoEl && tempoEl.value);
+    const tempo = Number.isFinite(tempoVal) && tempoVal > 0 ? tempoVal : 120;
+
+    out = out.replaceAll('<tempo_bpm>', String(tempo));
+
+    ProcessText(raw);
+
+    // To Strudel
+    if (globalEditor) {
+        globalEditor.setCode(out);
+    }
 }
 
 export function ProcessText(match, ...args) {
@@ -121,7 +137,19 @@ return (
                     <div className="col-md-4">
 
                         <nav>
-                            
+                            {/* Tempo control */}
+                            <div className="mb-3">
+                                <label htmlFor="tempo" className="form-label">Tempo (BPM)</label>
+                                <input
+                                    id="tempo"
+                                    type="number"
+                                    className="form-control"
+                                    defaultValue={120}
+                                    min={40}
+                                    max={220}
+                                    step={1}
+                                />
+                            </div>
                             <ProcButtons></ProcButtons>
                             <br />
                             <PlayButtons></PlayButtons>
