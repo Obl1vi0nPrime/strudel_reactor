@@ -21,21 +21,6 @@ const handleD3Data = (event) => {
 
 export function SetupButtons() {
 
-    const on = (id, ev, fn) => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener(ev, fn);
-    };
-
-    on('play', 'click', () => globalEditor && globalEditor.evaluate());
-    on('stop', 'click', () => globalEditor && globalEditor.stop());
-    on('process', 'click', () => Proc());
-    on('process_play', 'click', () => {
-        Proc();
-        globalEditor && globalEditor.evaluate();
-    });
-
-
-    /*
     document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
     document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
     document.getElementById('process').addEventListener('click', () => {
@@ -49,7 +34,6 @@ export function SetupButtons() {
         }
     }
     )
-    */
 }
 
 
@@ -77,26 +61,18 @@ export function Proc() {
     const p1 = hushChecked ? "_" : ""; // hush -> "_" | on -> "";
 
     // Replace all <p1_Radio tags in text
-    //const replaced = raw.replaceAll("<p1_Radio>", p1);
+    const replaced = raw.replaceAll("<p1_Radio>", p1);
 
-    
+    // send replaced code to strudel editor 
+    if (globalEditor) {
+        globalEditor.setCode(replaced);
+    }
     /*
     let proc_text = document.getElementById('proc').value
     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
     ProcessText(proc_text);
     globalEditor.setCode(proc_text_replaced)
     */
-
-    const tempoEl = document.getElementById('tempo');
-    const tempo = Number(tempoEl?.value) > 0 ? Number(tempoEl.value) : 120;
-    const replaced = raw
-        .replaceAll("<p1_Radio>", p1)
-        .replaceAll("<tempo_bpm>", String(tempo));
-
-    // send replaced code to strudel editor 
-    if (globalEditor) {
-        globalEditor.setCode(replaced);
-    }
 }
 
 export function ProcessText(match, ...args) {
@@ -166,18 +142,7 @@ return (
                     <div className="col-md-4">
 
                         <nav>
-                            {/* add tempo input just above buttons */}
-                            <div className="mb-3">
-                                <label htmlFor="tempo" className="form-label">Tempo (BPM):</label>
-                                <input
-                                    id="tempo"
-                                    type="number"
-                                    className="form-control"
-                                    defaultValue={120}
-                                    min={40}
-                                    max={200}
-                                />
-                            </div>
+                            
                             <ProcButtons></ProcButtons>
                             <br />
                             <PlayButtons></PlayButtons>
