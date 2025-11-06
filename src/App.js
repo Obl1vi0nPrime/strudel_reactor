@@ -133,6 +133,7 @@ return (
                         <div id="editor" />
                         <div id="output" />
                     </div>
+                 
                     <div className="col-md-4">
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
