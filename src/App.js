@@ -1,4 +1,4 @@
-import './App.css';
+﻿import './App.css';
 import { useEffect, useRef } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
@@ -46,12 +46,33 @@ export function ProcAndPlay() {
     }
 }
 
+// Simplyfying the processor, replaces <p1_radio> using our radio buttons
 export function Proc() {
 
+    const textArea = document.getElementById('proc');
+    if (!textArea) {
+        return;
+    }
+
+    const raw = textArea.value || "";
+
+    // Check if HUSH is selected
+    const hushChecked = document.getElementById('flexRadioDefault2')?.checked;
+    const p1 = hushChecked ? "_" : ""; // hush -> "_" | on -> "";
+
+    // Replace all <p1_Radio tags in text
+    const replaced = raw.replaceAll("<p1_Radio>", p1);
+
+    // send replaced code to strudel editor 
+    if (globalEditor) {
+        globalEditor.setCode(replaced);
+    }
+    /*
     let proc_text = document.getElementById('proc').value
     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
     ProcessText(proc_text);
     globalEditor.setCode(proc_text_replaced)
+    */
 }
 
 export function ProcessText(match, ...args) {
