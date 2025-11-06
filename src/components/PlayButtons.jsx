@@ -1,4 +1,4 @@
-function PlayButtons() {
+﻿function PlayButtons() {
     return (
       <div>
             <button id="play" className="btn btn-outline-primary">Play</button>

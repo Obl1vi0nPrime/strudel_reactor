@@ -14,6 +14,7 @@ import PlayButtons from './components/PlayButtons';
 import ProcButtons from './components/ProcButtons';
 import PreProcessContentArea from './components/PreProcessContentArea';
 import D3Graph from './components/D3Graph';
+import 'bootstrap/dist/css/bootstrap.min.css';
 let globalEditor = null;
 
 const handleD3Data = (event) => {
