@@ -13,6 +13,7 @@ import DJControls from './components/DJControls';
 import PlayButtons from './components/PlayButtons';
 import ProcButtons from './components/ProcButtons';
 import PreProcessContentArea from './components/PreProcessContentArea';
+import D3Graph from './components/D3Graph';
 let globalEditor = null;
 
 const handleD3Data = (event) => {
@@ -132,7 +133,7 @@ return (
 
             <div className="container-fluid">
                 <div className="row">
-
+                    <D3Graph></D3Graph>
                     <PreProcessContentArea></PreProcessContentArea>
                     <div className="col-md-4">
 
