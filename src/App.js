@@ -14,6 +14,7 @@ import PlayButtons from './components/PlayButtons';
 import ProcButtons from './components/ProcButtons';
 import PreProcessContentArea from './components/PreProcessContentArea';
 import D3Graph from './components/D3Graph';
+import SoundControls from './components/SoundControls';
 import 'bootstrap/dist/css/bootstrap.min.css';
 let globalEditor = null;
 
@@ -153,6 +154,7 @@ return (
                  
                     <div className="col-md-4">
                         <DJControls></DJControls>
+                        <SoundControls></SoundControls>
                     </div>
                 </div>
             </div>

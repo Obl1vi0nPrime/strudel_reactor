@@ -18,20 +18,6 @@ function DJControls() {
               </div>
           </div>
 
-          {/* Tempo control */}
-          <div className="mb-3">
-              <label htmlFor="tempo" className="form-label">Tempo (BPM)</label>
-              <input
-                  id="tempo"
-                  type="number"
-                  className="form-control"
-                  defaultValue={120}
-                  min={40}
-                  max={220}
-                  step={1}
-              />
-          </div>
-
 
       </div>
   );
