@@ -1,4 +1,4 @@
-import './App.css';
+﻿import './App.css';
 import { useEffect, useRef } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
@@ -130,7 +130,9 @@ useEffect(() => {
 
 return (
     <div>
-        <h2>Strudel Demo</h2>
+        <nav className="navbar navbar-dark bg-dark justify-content-center mb-4">
+            <span className="navbar-brand mb-0 h1 text-light">🎵 Strudel Demo 🎵</span>
+        </nav>
         <main>
 
             <div className="container-fluid">
