@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\nihal\\OneDrive\\Documents\\WebTechReactAssignment\\strudel_reactor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\nihal\\onedrive\\documents\\webtechreactassignment\\strudel_reactor\\reactassignment.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:reactassignment.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\nihal\\onedrive\\documents\\webtechreactassignment\\strudel_reactor\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ReactAssignment",
+              "DocumentMoniker": "C:\\Users\\nihal\\OneDrive\\Documents\\WebTechReactAssignment\\strudel_reactor\\ReactAssignment.esproj",
+              "RelativeDocumentMoniker": "ReactAssignment.esproj",
+              "ToolTip": "C:\\Users\\nihal\\OneDrive\\Documents\\WebTechReactAssignment\\strudel_reactor\\ReactAssignment.esproj",
+              "RelativeToolTip": "ReactAssignment.esproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-09T07:56:20.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\nihal\\OneDrive\\Documents\\WebTechReactAssignment\\strudel_reactor\\src\\App.js",
               "RelativeDocumentMoniker": "src\\App.js",
@@ -30,8 +47,7 @@
               "RelativeToolTip": "src\\App.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-06T15:32:50.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-06T15:32:50.606Z"
             }
           ]
         }
