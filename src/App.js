@@ -64,7 +64,7 @@ export function Proc() {
     const tempoInput = document.getElementById('tempo');
     const reverbCheck = document.getElementById('reverb_on');
     const gainSlider = document.getElementById('master_gain');
-    const radioHush = document.getElementById('flexRadioDefaut2');
+    const radioHush = document.getElementById('flexRadioDefault2');
 
     let tempo = 140; //default val for now
     if (tempoInput && tempoInput.value !== '') {
@@ -93,33 +93,32 @@ export function Proc() {
     }
     out = out.replaceAll('<reverb_on>', reverbText);
 
+    // Replace the <master_gain>
+    out = out.replaceAll('<master_gain>', String(masterGain.toFixed(2)));
+
+    // Replace the <p1_radio> old placeholder
+    if (out.includes('<p1_Radio>')) {
+        let replaceValue = '';
+        if (radioHush && radioHush.checked) {
+            replaceValue = '_';
+        }
+        out = out.replaceAll('<p1_Radio>', replaceValue);
+    }
+
+    // To check for missing placeholders
+    const leftover = out.match(/<(p1_Radio|tempo_bpm|reverb_on|master_gain)>/);
+    if (leftover) {
+        console.error('Leftover tag not replaced:', leftover[0]);
+        alert('Unreplaced tag found: ' + leftover[0] + '\nClick Preprocess again or fix spelling/placement.');
+        return;
+    }
 
 
-
-    /*
-
-    
-    const area = document.getElementById('proc');
-    if (!area) return;
-
-    const raw = area.value || "";
-
-    // existing p1_Radio replaced (kept exactly as the starter)
-    let out = raw.replaceAll('<p1_Radio>', ProcessText);
-
-    // Replace <tempo_bpm> using an input with id="tempo"
-    const tempoEl = document.getElementById('tempo');
-    const tempoVal = Number(tempoEl && tempoEl.value);
-    const tempo = Number.isFinite(tempoVal) && tempoVal > 0 ? tempoVal : 120;
-
-    out = out.replaceAll('<tempo_bpm>', String(tempo));
-
-    ProcessText(raw);
-
-    // To Strudel
+    //
+    console.log('[PROC] Processed Code: \n', out);
     if (globalEditor) {
         globalEditor.setCode(out);
-    }*/
+    }
 }
 
 export function ProcessText(match, ...args) {
