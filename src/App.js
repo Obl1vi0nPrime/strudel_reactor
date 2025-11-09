@@ -49,7 +49,56 @@ export function ProcAndPlay() {
     }
 }
 
+// WORK IN PROGRESS FOR SOUNDCONTROLS FEATURE IMPLEMENT^n
 export function Proc() {
+
+    
+    // Get raw text from the textarea 
+    let textarea = document.getElementById('proc');
+    let raw = '';
+    if (textarea) {
+        raw = textarea.value;
+    }
+
+    // Control elements 
+    const tempoInput = document.getElementById('tempo');
+    const reverbCheck = document.getElementById('reverb_on');
+    const gainSlider = document.getElementById('master_gain');
+    const radioHush = document.getElementById('flexRadioDefaut2');
+
+    let tempo = 140; //default val for now
+    if (tempoInput && tempoInput.value !== '') {
+        tempo = Number(tempoInput.value);
+    }
+
+    let reverbChecked = false;
+    if (reverbChecked && reverbCheck.checked) {
+        reverbChecked = true;
+    }
+
+    let masterGain = 1.0;
+    if (gainSlider && gainSlider.value !== ' ') {
+        masterGain = Number(gainSlider.value);
+    }
+
+    let out = raw; // Copy and replace tags.
+
+    // Replace the <tempo_bpm>
+    out = out.replaceAll('<tempo_bpm>', String(tempo));
+
+    // Replace the <reverb_on>
+    let reverbText = '';
+    if (reverbChecked) {
+        reverbText = '.room(0.35)'; 
+    }
+    out = out.replaceAll('<reverb_on>', reverbText);
+
+
+
+
+    /*
+
+    
     const area = document.getElementById('proc');
     if (!area) return;
 
@@ -70,7 +119,7 @@ export function Proc() {
     // To Strudel
     if (globalEditor) {
         globalEditor.setCode(out);
-    }
+    }*/
 }
 
 export function ProcessText(match, ...args) {
