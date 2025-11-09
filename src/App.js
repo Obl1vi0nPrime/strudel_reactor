@@ -54,8 +54,8 @@ export function Proc() {
 
     
     // Get raw text from the textarea 
-    let textarea = document.getElementById('proc');
-    let raw = '';
+    var textarea = document.getElementById('proc');
+    var raw = '';
     if (textarea) {
         raw = textarea.value;
     }
@@ -66,28 +66,28 @@ export function Proc() {
     const gainSlider = document.getElementById('master_gain');
     const radioHush = document.getElementById('flexRadioDefault2');
 
-    let tempo = 140; //default val for now
+    var tempo = 140; //default val for now
     if (tempoInput && tempoInput.value !== '') {
         tempo = Number(tempoInput.value);
     }
 
-    let reverbChecked = false;
-    if (reverbChecked && reverbCheck.checked) {
+    var reverbChecked = false;
+    if (reverbCheck && reverbCheck.checked) {
         reverbChecked = true;
     }
 
-    let masterGain = 1.0;
+    var masterGain = 1.0;
     if (gainSlider && gainSlider.value !== ' ') {
         masterGain = Number(gainSlider.value);
     }
 
-    let out = raw; // Copy and replace tags.
+    var out = raw; // Copy and replace tags.
 
     // Replace the <tempo_bpm>
     out = out.replaceAll('<tempo_bpm>', String(tempo));
 
     // Replace the <reverb_on>
-    let reverbText = '';
+    var reverbText = '';
     if (reverbChecked) {
         reverbText = '.room(0.35)'; 
     }
@@ -98,7 +98,7 @@ export function Proc() {
 
     // Replace the <p1_radio> old placeholder
     if (out.includes('<p1_Radio>')) {
-        let replaceValue = '';
+        var replaceValue = '';
         if (radioHush && radioHush.checked) {
             replaceValue = '_';
         }
@@ -115,7 +115,7 @@ export function Proc() {
 
 
     //
-    console.log('[PROC] Processed Code: \n', out);
+    console.log('Processed Code: \n', out);
     if (globalEditor) {
         globalEditor.setCode(out);
     }
