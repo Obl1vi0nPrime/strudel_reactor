@@ -1,37 +1,34 @@
-let originalLog = null;
+﻿let originalLog = null;
 const logArray = [];
 
-
 export default function console_monkey_patch() {
-
-    //If react multicalls this, do nothing
     if (originalLog) return;
 
     originalLog = console.log;
 
-    //Overwrite console.log function
     console.log = function (...args) {
-        //Join args with space, default behaviour. Check for [hap], that's a strudel prefix
-        if (args.join(" ").substring(0, 8) === "%c[hap] ")
-        {
+        const str = args.join(" ");
 
-            //If so, add it to the Array of values.
-            //Then remove the oldest values once we've hit 100.
-            logArray.push(args.join(" ").replace("%c[hap] ", ""));
+        // Detect Strudel hap logs
+        if (str.startsWith("%c[hap] ")) {
+            const clean = str.replace("%c[hap] ", "");
+            logArray.push(clean);
 
+            // keep last 100 logs
             if (logArray.length > 100) {
-                logArray.splice(0, 1);
+                logArray.shift();
             }
-            //Dispatch a customevent we can listen to in App.js
+
             const event = new CustomEvent("d3Data", { detail: [...logArray] });
             document.dispatchEvent(event);
-
         }
+
+        // Always call the original console.log
         originalLog.apply(console, args);
     };
-
 }
 
+// used by D3Graph
 export function getD3Data() {
     return [...logArray];
 }

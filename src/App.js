@@ -16,6 +16,7 @@ import PreProcessContentArea from './components/PreProcessContentArea';
 import D3Graph from './components/D3Graph';
 import SoundControls from './components/SoundControls';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 let globalEditor = null;
 
 const handleD3Data = (event) => {
