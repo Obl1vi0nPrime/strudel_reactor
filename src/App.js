@@ -188,12 +188,18 @@ return (
                     <D3Graph></D3Graph>
                     <PreProcessContentArea></PreProcessContentArea>
                     <div className="col-md-4">
-
-                        <nav>
-                            <ProcButtons></ProcButtons>
-                            <br />
-                            <PlayButtons></PlayButtons>
-                        </nav>
+                        {/* Transport (Proc / Play / Stop) */}
+                        <div className="card shadow-sm mb-3">
+                            <div className="card-header py-2">
+                                <strong>Control Panel</strong>
+                            </div>
+                            <div className="card-body">
+                                <ProcButtons />
+                                <div className="mt-2">
+                                    <PlayButtons />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
@@ -201,12 +207,12 @@ return (
                         <div id="editor" />
                         <div id="output" />
                     </div>
-                 
                     <div className="col-md-4">
                         <DJControls></DJControls>
                         <SoundControls></SoundControls>
                     </div>
                 </div>
+                <canvas id="roll"></canvas>
             </div>
             <canvas id="roll"></canvas>
         </main >
